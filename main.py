@@ -22,13 +22,13 @@ app.include_router(todos.router)
 
 origins = [
     # "http://localhost:3000",
-    "https://frontend-netxjs-versel-dm.vercel.app/",
+    "https://frontend-netxjs-versel-dm.vercel.app/"
 ]
 
 # CORS configuration, needed for frontend development
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
