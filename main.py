@@ -21,7 +21,7 @@ app.include_router(todos.router)
 
 
 origins = [
-    # "http://localhost:3000",
+    "http://localhost:3000",
     "https://frontend-netxjs-versel-dm-jnfn.vercel.app/",
 ]
 
