@@ -16,15 +16,16 @@ app = FastAPI()
 # app.include_router(todos.router)
 
 # Lista de orígenes permitidos para CORS
-origins = [
-    "http://localhost:3000",
-    "https://frontend-netxjs-versel-dm-jnfn.vercel.app/",
-]
+# origins = [
+#     "http://localhost:3000",
+#     "https://frontend-netxjs-versel-dm-jnfn.vercel.app/",
+# ]
 
 # Configuración de CORS para permitir solicitudes desde los orígenes específicos
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Usar la lista de orígenes definidos
+    # Usar la lista de orígenes definidos
+    allow_origins=["https://frontend-netxjs-versel-dm-jnfn.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
