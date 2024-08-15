@@ -1,33 +1,30 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from functools import lru_cache
 from typing import Union
-
-from fastapi import FastAPI, Depends
-
 from fastapi.responses import PlainTextResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-# routers: comentar hasta que los crees
-from routers import todos
+# Importa los routers solo si ya existen. Si no, comenta esta línea.
+# from routers import todos
 
 import config
 
 app = FastAPI()
 
-# routers: comentar hasta que los crees
-app.include_router(todos.router)
+# Incluye el router si ya existe. Si no, comenta esta línea.
+# app.include_router(todos.router)
 
 # Lista de orígenes permitidos para CORS
 origins = [
     "http://localhost:3000",
-    "https://frontend-netxjs-versel-dm-jnfn.vercel.app",
+    "https://frontend-netxjs-versel-dm-jnfn.vercel.app/",
 ]
 
 # Configuración de CORS para permitir solicitudes desde los orígenes específicos
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Usar la lista de orígenes definidos
+    allow_origins=origins,  # Usar la lista de orígenes definidos
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
