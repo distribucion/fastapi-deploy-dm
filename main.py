@@ -59,10 +59,9 @@
 # def read_item(item_id: int, q: Union[str, None] = None):
 #     return {"item_id": item_id, "q": q}
 
+from fastapi import FastAPI, Depends
 from functools import lru_cache
 from typing import Union
-
-from fastapi import FastAPI, Depends
 from fastapi.responses import PlainTextResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -79,15 +78,29 @@ app.include_router(todos.router)
 
 
 # origins = [
-#    "http://localhost:3000",
-#    "https://frontend-netxjs-versel-dm-jnfn.vercel.app//",
+#     "http://localhost:3000",
+#     "https://frontend-netxjs-versel-dm-jnfn.vercel.app/",
 # ]
 
-# CORS configuration, needed for frontend development
+# # CORS configuration, needed for frontend development
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["http://localhost:3000",
+#                    "https://frontend-netxjs-versel-dm-jnfn.vercel.app",],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+# #     allow_headers=["*"],
+# )
+
+
+origins = [
+    # Cambia esto por el dominio de tu aplicación en Vercel
+    "https://frontend-netxjs-versel-dm-jnfn.vercel.app"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000",
-                   "https://todo-frontend-khaki.vercel.app/",],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
